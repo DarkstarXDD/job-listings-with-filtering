@@ -2,4 +2,18 @@
 
 @theme {
   --font-league-spartan: var(--font-league-sparten);
+
+  --color-white: hsl(0, 0%, 100%);
+
+  --color-foreground: hsl(180, 14%, 20%);
+  --color-backrgound: hsl(180, 52%, 96%);
+
+  --color-primary-foreground: hsl(0, 0%, 100%);
+  --color-primary-background: hsl(180, 29%, 50%);
+
+  --color-secondary-foreground: hsl(180, 29%, 50%);
+  --color-secondary-background: hsl(180, 28%, 95%);
+
+  --color-foreground-muted: hsl(180, 8%, 52%);
+  --color-foreground-muted-light: hsl(180, 10%, 74%);
 }

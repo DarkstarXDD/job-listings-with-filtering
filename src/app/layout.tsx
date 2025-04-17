@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${leagueSpartan.variable} font-league-spartan bg-zinc-800 text-white`}
+        className={`${leagueSpartan.variable} font-league-spartan bg-backrgound`}
       >
         {children}
       </body>
