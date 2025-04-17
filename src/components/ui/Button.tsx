@@ -7,11 +7,12 @@ const buttonStyles = tv({
     variant: {
       default:
         "bg-primary-background hover:bg-foreground text-primary-foreground active:bg-foreground",
+      secondary: "text-secondary-foreground bg-secondary-background",
       ghost:
         "text-foreground-muted hover:text-secondary-foreground active:text-secondary-foreground hover:underline",
     },
     size: {
-      default: "px-4 py-2",
+      default: "px-3 py-1",
       icon: "size-8",
     },
   },

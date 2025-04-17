@@ -1,4 +1,5 @@
 import Filters from "@/components/Filters"
+import JobCard from "@/components/JobCard"
 
 export default function HomePage() {
   return (
@@ -8,7 +9,9 @@ export default function HomePage() {
 
         <div className="col-start-1 col-end-2 row-start-2 row-end-5 mx-auto grid w-full max-w-278 grid-rows-subgrid px-6">
           <Filters className="shadow-secondary-foreground/15 row-start-1 row-end-3 shadow-lg" />
-          <div className="row-start-3 row-end-4 mt-8 h-100 bg-green-400 md:mt-10"></div>
+          <div className="row-start-3 row-end-4 mt-8 md:mt-10">
+            <JobCard />
+          </div>
         </div>
       </main>
     </>
