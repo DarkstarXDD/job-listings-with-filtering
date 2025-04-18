@@ -1,6 +1,10 @@
+"use client"
+
 import { cn } from "@/lib/utils"
-import Filter from "@/components/Filter"
 import Button from "@/components/ui/Button"
+import { TagGroup, Tag } from "@/components/ui/TagGroup"
+
+const itemsArr = ["Frontend", "CSS", "JavaScript"]
 
 export default function Filters({ className }: { className?: string }) {
   return (
@@ -10,11 +14,11 @@ export default function Filters({ className }: { className?: string }) {
         className
       )}
     >
-      <div className="flex flex-wrap items-center justify-start gap-4">
-        <Filter filterName="Frontend" />
-        <Filter filterName="CSS" />
-        <Filter filterName="JavaScript" />
-      </div>
+      <TagGroup onRemove={(key) => console.log(key)}>
+        {itemsArr.map((item) => (
+          <Tag key={item}>{item}</Tag>
+        ))}
+      </TagGroup>
 
       <Button variant="ghost" className="p-0">
         Clear

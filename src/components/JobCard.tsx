@@ -1,6 +1,18 @@
+"use client"
+
 import Avatar from "@/components/ui/Avatar"
 import Badge from "@/components/ui/Badge"
-import Button from "@/components/ui/Button"
+import { TagGroup, Tag } from "@/components/ui/TagGroup"
+
+const itemsArr = [
+  "Frontend",
+  "Senior",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React",
+  "TypeScript",
+]
 
 export default function JobCard() {
   return (
@@ -30,15 +42,14 @@ export default function JobCard() {
         </div>
       </div>
 
-      <div className="border-foreground-muted-light flex flex-wrap gap-4 border-t-1 pt-4 lg:border-none">
-        <Button variant="secondary">Frontend</Button>
-        <Button variant="secondary">Senior</Button>
-        <Button variant="secondary">HTML</Button>
-        <Button variant="secondary">CSS</Button>
-        <Button variant="secondary">JavaScript</Button>
-        <Button variant="secondary">JavaScript</Button>
-        <Button variant="secondary">JavaScript</Button>
-      </div>
+      <TagGroup
+        selectionMode="multiple"
+        className="border-foreground-muted-light border-t-1 pt-4 lg:border-none"
+      >
+        {itemsArr.map((item) => (
+          <Tag key={item}>{item}</Tag>
+        ))}
+      </TagGroup>
     </div>
   )
 }
