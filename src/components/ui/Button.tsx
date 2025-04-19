@@ -29,9 +29,10 @@ export default function Button({
   className,
   variant,
   size,
+  ...props
 }: ButtonProps) {
   return (
-    <button className={buttonStyles({ variant, size, className })}>
+    <button {...props} className={buttonStyles({ variant, size, className })}>
       {children}
     </button>
   )

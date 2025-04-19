@@ -4,17 +4,15 @@ import Avatar from "@/components/ui/Avatar"
 import Badge from "@/components/ui/Badge"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
 import type { Selection } from "react-aria-components"
-import useFilters from "@/hooks/useFilters"
 
 const itemsArr = ["Frontend", "HTML", "TypeScript"]
 
 type JobCardProps = {
+  filters: string[]
   onFilterChange: (keys: Selection) => void
 }
 
-export default function JobCard({ onFilterChange }: JobCardProps) {
-  const filters = useFilters()
-
+export default function JobCard({ filters, onFilterChange }: JobCardProps) {
   return (
     <div className="border-primary-background shadow-secondary-foreground/15 grid gap-4 rounded-md border-l-5 bg-white px-6 py-8 shadow-lg lg:grid-cols-[auto_1fr] lg:items-center lg:justify-items-end lg:gap-16 lg:px-10">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">

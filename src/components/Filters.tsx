@@ -4,9 +4,13 @@ import { cn } from "@/lib/utils"
 import Button from "@/components/ui/Button"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
 
-type FiltersProps = { filters: string[]; className: string }
+type FiltersProps = {
+  filters: string[]
+  onClear: () => void
+  className: string
+}
 
-export default function Filters({ filters, className }: FiltersProps) {
+export default function Filters({ filters, onClear, className }: FiltersProps) {
   return (
     <div
       className={cn(
@@ -22,7 +26,7 @@ export default function Filters({ filters, className }: FiltersProps) {
         ))}
       </TagGroup>
 
-      <Button variant="ghost" className="p-0">
+      <Button variant="ghost" className="p-0" onClick={onClear}>
         Clear
       </Button>
     </div>
