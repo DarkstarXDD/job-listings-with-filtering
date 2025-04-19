@@ -11,6 +11,8 @@ export default function JobListings({ className }: { className: string }) {
   const searchParams = useSearchParams()
   const router = useRouter()
 
+  const filters = searchParams.getAll("filters")
+
   function handleFilterChange(filters: Selection) {
     const filtersArray = Array.from(filters)
     const newSearchParams = new URLSearchParams(searchParams)
@@ -27,7 +29,10 @@ export default function JobListings({ className }: { className: string }) {
 
   return (
     <div className={cn("mx-auto w-full px-6", className)}>
-      <Filters className="shadow-secondary-foreground/15 row-start-1 row-end-3 shadow-lg" />
+      {filters.length > 0 && (
+        <Filters className="row-start-1 row-end-3" filters={filters} />
+      )}
+
       <div className="row-start-3 row-end-4 mt-8 grid gap-10 md:mt-10 lg:gap-6">
         <JobCard onFilterChange={handleFilterChange} />
         <JobCard onFilterChange={handleFilterChange} />

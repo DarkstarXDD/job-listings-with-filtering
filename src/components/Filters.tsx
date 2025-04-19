@@ -4,19 +4,21 @@ import { cn } from "@/lib/utils"
 import Button from "@/components/ui/Button"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
 
-const itemsArr = ["Frontend", "CSS", "JavaScript"]
+type FiltersProps = { filters: string[]; className: string }
 
-export default function Filters({ className }: { className?: string }) {
+export default function Filters({ filters, className }: FiltersProps) {
   return (
     <div
       className={cn(
-        "flex items-center justify-between gap-4 rounded-md bg-white p-5 md:px-10",
+        "shadow-secondary-foreground/15 flex items-center justify-between gap-4 rounded-md bg-white p-5 shadow-lg md:px-10",
         className
       )}
     >
       <TagGroup onRemove={(key) => console.log(key)}>
-        {itemsArr.map((item) => (
-          <Tag key={item}>{item}</Tag>
+        {filters.map((item) => (
+          <Tag id={item} key={item}>
+            {item}
+          </Tag>
         ))}
       </TagGroup>
 
