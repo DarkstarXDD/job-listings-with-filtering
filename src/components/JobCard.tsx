@@ -3,20 +3,20 @@
 import Avatar from "@/components/ui/Avatar"
 import Badge from "@/components/ui/Badge"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
+import type { Selection } from "react-aria-components"
+import useFilters from "@/hooks/useFilters"
 
-const itemsArr = [
-  "Frontend",
-  "Senior",
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "TypeScript",
-]
+const itemsArr = ["Frontend", "HTML", "TypeScript"]
 
-export default function JobCard() {
+type JobCardProps = {
+  onFilterChange: (keys: Selection) => void
+}
+
+export default function JobCard({ onFilterChange }: JobCardProps) {
+  const filters = useFilters()
+
   return (
-    <div className="border-primary-background grid gap-4 rounded-md border-l-5 bg-white px-6 py-8 lg:grid-cols-[auto_1fr] lg:items-center lg:justify-items-end lg:gap-16 lg:px-10">
+    <div className="border-primary-background shadow-secondary-foreground/15 grid gap-4 rounded-md border-l-5 bg-white px-6 py-8 shadow-lg lg:grid-cols-[auto_1fr] lg:items-center lg:justify-items-end lg:gap-16 lg:px-10">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
         <Avatar src="/images/photosnap.svg" />
         <div className="grid justify-items-start gap-4">
@@ -45,9 +45,13 @@ export default function JobCard() {
       <TagGroup
         selectionMode="multiple"
         className="border-foreground-muted-light border-t-1 pt-4 lg:border-none"
+        onSelectionChange={(keys) => onFilterChange(keys)}
+        defaultSelectedKeys={filters}
       >
         {itemsArr.map((item) => (
-          <Tag key={item}>{item}</Tag>
+          <Tag id={item} key={item}>
+            {item}
+          </Tag>
         ))}
       </TagGroup>
     </div>
