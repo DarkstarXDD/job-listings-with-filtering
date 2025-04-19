@@ -46,7 +46,7 @@ export default function JobCard({ onFilterChange }: JobCardProps) {
         selectionMode="multiple"
         className="border-foreground-muted-light border-t-1 pt-4 lg:border-none"
         onSelectionChange={(keys) => onFilterChange(keys)}
-        defaultSelectedKeys={filters}
+        selectedKeys={filters}
       >
         {itemsArr.map((item) => (
           <Tag id={item} key={item}>
