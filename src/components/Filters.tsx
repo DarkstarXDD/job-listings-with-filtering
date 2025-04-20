@@ -7,10 +7,16 @@ import { TagGroup, Tag } from "@/components/ui/TagGroup"
 type FiltersProps = {
   filters: string[]
   onClear: () => void
+  onRemove: (removedFilters: Set<string | number>) => void
   className: string
 }
 
-export default function Filters({ filters, onClear, className }: FiltersProps) {
+export default function Filters({
+  filters,
+  onClear,
+  onRemove,
+  className,
+}: FiltersProps) {
   return (
     <div
       className={cn(
@@ -18,7 +24,7 @@ export default function Filters({ filters, onClear, className }: FiltersProps) {
         className
       )}
     >
-      <TagGroup onRemove={(key) => console.log(key)}>
+      <TagGroup onRemove={(key) => onRemove(key)}>
         {filters.map((item) => (
           <Tag id={item} key={item}>
             {item}

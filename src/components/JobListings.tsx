@@ -14,9 +14,7 @@ export default function JobListings({ className }: { className: string }) {
 
   const filters = searchParams.getAll("filters")
 
-  function handleFilterChange(filters: Selection) {
-    const filtersArray = Array.from(filters)
-
+  function updateFiltersInUrl(filtersArray: (string | number)[]) {
     newSearchParams.delete("filters")
 
     filtersArray.map((filter) => {
@@ -25,6 +23,18 @@ export default function JobListings({ className }: { className: string }) {
     })
 
     pushSearchParams(newSearchParams)
+  }
+
+  function handleFilterChange(filters: Selection) {
+    const filtersArray = Array.from(filters)
+    updateFiltersInUrl(filtersArray)
+  }
+
+  function removeFilter(removedFilters: Set<string | number>) {
+    const removedFiltersArray = Array.from(removedFilters)
+    const removedFilter = String(removedFiltersArray[0])
+    const newFilters = filters.filter((item) => item !== removedFilter)
+    updateFiltersInUrl(newFilters)
   }
 
   function clearAllFilters() {
@@ -39,6 +49,7 @@ export default function JobListings({ className }: { className: string }) {
           className="row-start-1 row-end-3"
           filters={filters}
           onClear={clearAllFilters}
+          onRemove={removeFilter}
         />
       )}
 
