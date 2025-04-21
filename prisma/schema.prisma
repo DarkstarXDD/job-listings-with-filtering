@@ -15,6 +15,11 @@ enum Level {
   Lead
 }
 
+enum Contract {
+  PartTime
+  FullTime
+}
+
 model Job {
   id         String     @id @default(uuid())
   position   String
@@ -22,6 +27,7 @@ model Job {
   isFeatured Boolean
   level      Level
   location   String
+  contract   Contract
   postedAt   DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   companyId  String
