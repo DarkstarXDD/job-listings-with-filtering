@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Level {
+  Internship
+  Junior
+  Midlevel
+  Senior
+  Lead
+}
+
+model Job {
+  id         String     @id @default(uuid())
+  position   String
+  isNew      Boolean
+  isFeatured Boolean
+  level      Level
+  location   String
+  postedAt   DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  companyId  String
+  roleId     String
+  languages  Language[]
+  tools      Tool[]
+
+  company Company @relation(fields: [companyId], references: [id])
+  role    Role    @relation(fields: [roleId], references: [id])
+}
+
+model Company {
+  id   String @id @default(uuid())
+  name String @unique
+  logo String
+  jobs Job[]
+}
+
+model Role {
+  id   String @id @default(uuid())
+  name String @unique
+  jobs Job[]
+}
+
+model Language {
+  id   String @id @default(uuid())
+  name String
+  jobs Job[]
+}
+
+model Tool {
+  id   String @id @default(uuid())
+  name String
+  jobs Job[]
+}
