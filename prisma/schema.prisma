@@ -10,7 +10,7 @@ datasource db {
 enum Level {
   Internship
   Junior
-  Midlevel
+  MidLevel
   Senior
   Lead
 }
@@ -18,25 +18,27 @@ enum Level {
 enum Contract {
   PartTime
   FullTime
+  Contract
 }
 
 model Job {
   id         String     @id @default(uuid())
   position   String
-  isNew      Boolean
-  isFeatured Boolean
+  isNew      Boolean    @default(false)
+  isFeatured Boolean    @default(false)
   level      Level
   location   String
   contract   Contract
   postedAt   DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  companyId  String
-  roleId     String
   languages  Language[]
   tools      Tool[]
 
-  company Company @relation(fields: [companyId], references: [id])
-  role    Role    @relation(fields: [roleId], references: [id])
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId String
+
+  role   Role   @relation(fields: [roleId], references: [id])
+  roleId String
 }
 
 model Company {
@@ -54,12 +56,12 @@ model Role {
 
 model Language {
   id   String @id @default(uuid())
-  name String
+  name String @unique
   jobs Job[]
 }
 
 model Tool {
   id   String @id @default(uuid())
-  name String
+  name String @unique
   jobs Job[]
 }
