@@ -21,8 +21,14 @@ enum Contract {
   Contract
 }
 
+enum RoleName {
+  Frontend
+  Backend
+  Fullstack
+}
+
 model Job {
-  id         String     @id @default(uuid())
+  id         String     @id @default(cuid())
   position   String
   isNew      Boolean    @default(false)
   isFeatured Boolean    @default(false)
@@ -42,26 +48,26 @@ model Job {
 }
 
 model Company {
-  id   String @id @default(uuid())
+  id   String @id @default(cuid())
   name String @unique
   logo String
   jobs Job[]
 }
 
 model Role {
-  id   String @id @default(uuid())
-  name String @unique
+  id   String   @id @default(cuid())
+  name RoleName @unique
   jobs Job[]
 }
 
 model Language {
-  id   String @id @default(uuid())
+  id   String @id @default(cuid())
   name String @unique
   jobs Job[]
 }
 
 model Tool {
-  id   String @id @default(uuid())
+  id   String @id @default(cuid())
   name String @unique
   jobs Job[]
 }
