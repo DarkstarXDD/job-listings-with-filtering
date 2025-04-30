@@ -26,7 +26,7 @@ export function TagGroup<T extends object>({
   return (
     <RACTagGroup {...props}>
       <Label>{label}</Label>
-      <TagList className="flex flex-wrap gap-4" items={items}>
+      <TagList className="flex flex-wrap gap-4 lg:justify-end" items={items}>
         {children}
       </TagList>
     </RACTagGroup>

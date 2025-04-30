@@ -4,6 +4,10 @@
 }
 
 @theme {
+  --breakpoint-*: initial;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+
   --font-league-spartan: var(--font-league-sparten);
 
   --color-white: hsl(0, 0%, 100%);
