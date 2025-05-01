@@ -1,11 +1,11 @@
 "use client"
 
-import { cn } from "@/lib/utils"
-import useJobFilters from "@/hooks/useJobFilters"
-import type { JobType } from "@/app/page"
-
 import Filters from "@/components/Filters"
 import JobCard from "@/components/JobCard"
+import useJobFilters from "@/hooks/useJobFilters"
+import { cn } from "@/lib/utils"
+
+import type { JobType } from "@/app/page"
 
 export default function JobListings({
   className,

@@ -1,8 +1,8 @@
 "use client"
 
-import { cn } from "@/lib/utils"
 import Button from "@/components/ui/Button"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
+import { cn } from "@/lib/utils"
 
 type FiltersProps = {
   filters: string[]

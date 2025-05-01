@@ -1,5 +1,7 @@
 import { useSearchParams } from "next/navigation"
+
 import usePushSearchParams from "@/hooks/usePushSearchParams"
+
 import type { Selection } from "react-aria-components"
 
 export default function useJobFilters() {

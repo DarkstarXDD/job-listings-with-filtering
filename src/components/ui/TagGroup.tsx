@@ -4,13 +4,15 @@ import {
   TagList,
   Tag as RACTag,
 } from "react-aria-components"
+import { FaTimes } from "react-icons/fa"
+
 import Button from "@/components/ui/Button"
+
 import type {
   TagGroupProps as RACTagGroupProps,
   TagListProps as RACTagListProps,
   TagProps,
 } from "react-aria-components"
-import { FaTimes } from "react-icons/fa"
 
 type TagGroupProps<T> = Omit<RACTagGroupProps, "children"> &
   Pick<RACTagListProps<T>, "items" | "children"> & {

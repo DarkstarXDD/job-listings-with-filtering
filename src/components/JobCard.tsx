@@ -1,17 +1,15 @@
 "use client"
 
-import { LuClock3 } from "react-icons/lu"
-import { LuBriefcase } from "react-icons/lu"
-import { LuBuilding2 } from "react-icons/lu"
 import { startCase } from "lodash"
-import type { Selection } from "react-aria-components"
-import { formatPostedDate } from "@/lib/utils"
+import { LuBuilding2, LuBriefcase, LuClock3 } from "react-icons/lu"
 
 import { JobType } from "@/app/page"
-
 import Avatar from "@/components/ui/Avatar"
 import Badge from "@/components/ui/Badge"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
+import { formatPostedDate } from "@/lib/utils"
+
+import type { Selection } from "react-aria-components"
 
 type JobCardProps = {
   filters: string[]

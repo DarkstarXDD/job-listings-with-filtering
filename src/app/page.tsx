@@ -1,6 +1,7 @@
-import prisma from "@/lib/prisma"
-import type { Prisma } from "@prisma/client"
 import JobListings from "@/components/JobListings"
+import prisma from "@/lib/prisma"
+
+import type { Prisma } from "@prisma/client"
 
 export type JobType = Prisma.JobGetPayload<{
   include: {
@@ -39,8 +40,6 @@ export default async function HomePage({
       tags: true,
     },
   })
-
-  console.log(jobs)
 
   return (
     <>
