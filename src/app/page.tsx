@@ -40,6 +40,8 @@ export default async function HomePage({
     },
   })
 
+  console.log(jobs)
+
   return (
     <>
       <main className="grid grid-rows-[1fr_auto_auto_auto]">

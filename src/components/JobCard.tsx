@@ -5,6 +5,7 @@ import { LuBriefcase } from "react-icons/lu"
 import { LuBuilding2 } from "react-icons/lu"
 import { startCase } from "lodash"
 import type { Selection } from "react-aria-components"
+import { formatPostedDate } from "@/lib/utils"
 
 import { JobType } from "@/app/page"
 
@@ -45,7 +46,7 @@ export default function JobCard({
           <div className="text-foreground-muted flex items-center justify-center gap-6 text-base font-medium md:gap-9 md:text-lg">
             <p className="flex items-center gap-1">
               <LuClock3 className="size-4" />
-              <span>1d ago</span>
+              <span>{formatPostedDate(job.postedAt)}</span>
             </p>
             <p className="flex items-center gap-1">
               <LuBriefcase className="size-4" />
