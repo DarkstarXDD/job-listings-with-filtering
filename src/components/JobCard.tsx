@@ -3,6 +3,7 @@
 import { LuClock3 } from "react-icons/lu"
 import { LuBriefcase } from "react-icons/lu"
 import { LuBuilding2 } from "react-icons/lu"
+import { startCase } from "lodash"
 import type { Selection } from "react-aria-components"
 
 import { JobType } from "@/app/page"
@@ -48,7 +49,7 @@ export default function JobCard({
             </p>
             <p className="flex items-center gap-1">
               <LuBriefcase className="size-4" />
-              <span>{job.contract}</span>
+              <span>{startCase(job.contract)}</span>
             </p>
             <p className="flex items-center gap-1">
               <LuBuilding2 className="size-4" />
