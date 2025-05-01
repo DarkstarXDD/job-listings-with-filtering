@@ -1,5 +1,8 @@
 "use client"
 
+import { LuClock3 } from "react-icons/lu"
+import { LuBriefcase } from "react-icons/lu"
+import { LuBuilding2 } from "react-icons/lu"
 import type { Selection } from "react-aria-components"
 
 import { JobType } from "@/app/page"
@@ -39,9 +42,18 @@ export default function JobCard({
           </h2>
 
           <div className="text-foreground-muted flex items-center justify-center gap-6 text-base font-medium md:gap-9 md:text-lg">
-            <p>1d ago</p>
-            <p>{job.contract}</p>
-            <p>{job.location}</p>
+            <p className="flex items-center gap-1">
+              <LuClock3 className="size-4" />
+              <span>1d ago</span>
+            </p>
+            <p className="flex items-center gap-1">
+              <LuBriefcase className="size-4" />
+              <span>{job.contract}</span>
+            </p>
+            <p className="flex items-center gap-1">
+              <LuBuilding2 className="size-4" />
+              <span>{job.location}</span>
+            </p>
           </div>
         </div>
       </div>

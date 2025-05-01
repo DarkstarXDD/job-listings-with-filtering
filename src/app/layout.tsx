@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { League_Spartan } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -34,6 +35,11 @@ const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
 })
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${leagueSpartan.variable} font-league-spartan bg-backrgound`}
+        className={`${leagueSpartan.variable} ${inter.variable} font-inter bg-backrgound`}
       >
         {children}
       </body>
