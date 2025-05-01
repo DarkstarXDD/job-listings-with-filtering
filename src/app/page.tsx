@@ -8,19 +8,37 @@ export type JobType = Prisma.JobGetPayload<{
     role: true
     languages: true
     tools: true
+    tags: true
   }
 }>
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ filters: string | string[] }>
+}) {
+  const { filters = [] } = await searchParams
+  const filtersArray = Array.isArray(filters) ? filters : [filters]
+
   const jobs = await prisma.job.findMany({
+    where: {
+      AND: filtersArray.map((tag) => ({
+        tags: {
+          some: {
+            name: tag,
+          },
+        },
+      })),
+    },
+
     include: {
       company: true,
       role: true,
       languages: true,
       tools: true,
+      tags: true,
     },
   })
-  console.log(jobs[4].company.name)
 
   return (
     <>

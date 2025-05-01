@@ -19,14 +19,6 @@ export default function JobCard({
   onFilterChange,
   job,
 }: JobCardProps) {
-  const tags = [
-    job.role.name,
-    job.level,
-    job.contract,
-    ...job.languages.map((l) => l.name),
-    ...job.tools.map((t) => t.name),
-  ]
-
   return (
     <div className="border-primary-background shadow-secondary-foreground/15 grid gap-4 rounded-md border-l-5 bg-white px-6 py-8 shadow-lg lg:grid-cols-[auto_1fr] lg:items-center lg:justify-items-end lg:gap-16 lg:px-10">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
@@ -54,18 +46,19 @@ export default function JobCard({
         </div>
       </div>
 
-      <TagGroup
-        selectionMode="multiple"
-        className="border-foreground-muted-light border-t-1 pt-4 lg:border-none"
-        onSelectionChange={(keys) => onFilterChange(keys)}
-        selectedKeys={filters}
-      >
-        {tags.map((tag) => (
-          <Tag id={tag} key={tag}>
-            {tag}
-          </Tag>
-        ))}
-      </TagGroup>
+      <div className="border-foreground-muted-light border-t-1 pt-4 lg:border-none">
+        <TagGroup
+          selectionMode="multiple"
+          onSelectionChange={(keys) => onFilterChange(keys)}
+          selectedKeys={filters}
+        >
+          {job.tags.map((tag) => (
+            <Tag id={tag.name} key={tag.name}>
+              {tag.name}
+            </Tag>
+          ))}
+        </TagGroup>
+      </div>
     </div>
   )
 }

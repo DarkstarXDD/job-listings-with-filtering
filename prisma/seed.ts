@@ -1,4 +1,4 @@
-import { PrismaClient, Level, Contract } from "@prisma/client"
+import { PrismaClient, Level, Contract, RoleName } from "@prisma/client"
 import { jobs } from "../public/jobsData"
 
 const prisma = new PrismaClient()
@@ -29,8 +29,8 @@ async function main() {
 
         role: {
           connectOrCreate: {
-            where: { name: job.role },
-            create: { name: job.role },
+            where: { name: job.role as RoleName },
+            create: { name: job.role as RoleName },
           },
         },
 
@@ -45,6 +45,13 @@ async function main() {
           connectOrCreate: job.tools.map((tool) => ({
             where: { name: tool },
             create: { name: tool },
+          })),
+        },
+
+        tags: {
+          connectOrCreate: job.tags.map((tag) => ({
+            where: { name: tag },
+            create: { name: tag },
           })),
         },
       },

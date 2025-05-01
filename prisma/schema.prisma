@@ -39,6 +39,7 @@ model Job {
   updatedAt  DateTime   @updatedAt
   languages  Language[]
   tools      Tool[]
+  tags       Tag[]
 
   company   Company @relation(fields: [companyId], references: [id])
   companyId String
@@ -67,6 +68,12 @@ model Language {
 }
 
 model Tool {
+  id   String @id @default(cuid())
+  name String @unique
+  jobs Job[]
+}
+
+model Tag {
   id   String @id @default(cuid())
   name String @unique
   jobs Job[]

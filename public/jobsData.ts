@@ -13,6 +13,7 @@ export const jobs = [
     location: "USA Only",
     languages: ["HTML", "CSS", "JavaScript"],
     tools: [],
+    tags: ["Frontend", "Senior", "FullTime", "HTML", "CSS", "JavaScript"],
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ export const jobs = [
     location: "Remote",
     languages: ["Python"],
     tools: ["React"],
+    tags: ["Fullstack", "MidLevel", "PartTime", "Python", "React"],
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ export const jobs = [
     location: "USA Only",
     languages: ["JavaScript"],
     tools: ["React", "Sass"],
+    tags: ["Frontend", "Junior", "PartTime", "JavaScript", "React", "Sass"],
   },
   {
     id: 4,
@@ -58,6 +61,7 @@ export const jobs = [
     location: "USA Only",
     languages: ["CSS", "JavaScript"],
     tools: [],
+    tags: ["Frontend", "Junior", "Contract", "CSS", "JavaScript"],
   },
   {
     id: 5,
@@ -73,6 +77,7 @@ export const jobs = [
     location: "Worldwide",
     languages: ["JavaScript", "Ruby"],
     tools: ["Sass"],
+    tags: ["Fullstack", "MidLevel", "FullTime", "JavaScript", "Ruby", "Sass"],
   },
   {
     id: 6,
@@ -88,6 +93,7 @@ export const jobs = [
     location: "UK Only",
     languages: ["Ruby"],
     tools: ["RoR"],
+    tags: ["Backend", "Junior", "FullTime", "Ruby", "RoR"],
   },
   {
     id: 7,
@@ -103,6 +109,7 @@ export const jobs = [
     location: "Worldwide",
     languages: ["HTML", "JavaScript"],
     tools: ["Sass"],
+    tags: ["Frontend", "Junior", "FullTime", "HTML", "JavaScript", "Sass"],
   },
   {
     id: 8,
@@ -118,6 +125,7 @@ export const jobs = [
     location: "USA Only",
     languages: ["JavaScript"],
     tools: ["Vue", "Sass"],
+    tags: ["Frontend", "Junior", "FullTime", "JavaScript", "Vue", "Sass"],
   },
   {
     id: 9,
@@ -133,6 +141,14 @@ export const jobs = [
     location: "Worldwide",
     languages: ["JavaScript", "Python"],
     tools: ["Django"],
+    tags: [
+      "Fullstack",
+      "MidLevel",
+      "FullTime",
+      "JavaScript",
+      "Python",
+      "Django",
+    ],
   },
   {
     id: 10,
@@ -148,5 +164,6 @@ export const jobs = [
     location: "Worldwide",
     languages: ["JavaScript"],
     tools: ["React", "Sass"],
+    tags: ["Frontend", "Junior", "PartTime", "JavaScript", "React", "Sass"],
   },
 ]
