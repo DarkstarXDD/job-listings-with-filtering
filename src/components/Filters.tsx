@@ -32,7 +32,7 @@ export default function Filters({
         ))}
       </TagGroup>
 
-      <Button variant="ghost" className="p-0" onClick={onClear}>
+      <Button variant="ghost" className="p-0" onPress={onClear}>
         Clear
       </Button>
     </div>

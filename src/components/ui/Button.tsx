@@ -1,19 +1,20 @@
-import { ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
+import { Button as RACButton } from "react-aria-components"
+import type { ButtonProps as RACButtonProps } from "react-aria-components"
 
 const buttonStyles = tv({
-  base: "ring-foreground flex cursor-pointer items-center justify-center rounded font-bold transition-colors outline-none focus-visible:ring-2",
+  base: "ring-foreground rac-focus-visible:ring-2 flex cursor-pointer items-center justify-center rounded font-bold transition-colors outline-none",
   variants: {
     variant: {
       default:
-        "bg-primary-background hover:bg-foreground text-primary-foreground active:bg-foreground",
+        "bg-primary-background rac-hover:bg-foreground text-primary-foreground rac-pressed:bg-foreground",
       secondary: "text-secondary-foreground bg-secondary-background",
       ghost:
-        "text-foreground-muted hover:text-secondary-foreground active:text-secondary-foreground hover:underline",
+        "text-foreground-muted rac-hover:text-secondary-foreground rac-pressed:text-secondary-foreground rac-hover:underline",
     },
     size: {
       default: "px-3 py-1",
-      icon: "size-8",
+      icon: "size-8 rounded-none",
     },
   },
   defaultVariants: {
@@ -22,7 +23,8 @@ const buttonStyles = tv({
   },
 })
 
-type ButtonProps = ComponentProps<"button"> & VariantProps<typeof buttonStyles>
+type ButtonProps = Omit<RACButtonProps, "className"> &
+  VariantProps<typeof buttonStyles> & { className?: string }
 
 export default function Button({
   children,
@@ -32,8 +34,11 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button {...props} className={buttonStyles({ variant, size, className })}>
+    <RACButton
+      {...props}
+      className={buttonStyles({ variant, size, className })}
+    >
       {children}
-    </button>
+    </RACButton>
   )
 }

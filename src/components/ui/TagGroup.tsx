@@ -3,8 +3,8 @@ import {
   Label,
   TagList,
   Tag as RACTag,
-  Button,
 } from "react-aria-components"
+import Button from "@/components/ui/Button"
 import type {
   TagGroupProps as RACTagGroupProps,
   TagListProps as RACTagListProps,
@@ -45,10 +45,7 @@ export function Tag({ children, ...props }: TagProps) {
         <>
           {children}
           {allowsRemoving && (
-            <Button
-              slot="remove"
-              className="rac-hover:bg-foreground bg-primary-background flex size-8 cursor-pointer items-center justify-center text-white"
-            >
+            <Button slot="remove" size="icon">
               <FaTimes />
             </Button>
           )}
