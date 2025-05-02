@@ -7,7 +7,7 @@ import Avatar from "@/components/ui/Avatar"
 import Button from "@/components/ui/Button"
 import { formatPostedDate } from "@/lib/utils"
 
-import type { JobType } from "@/app/jobs/[job]/page"
+import type { JobType } from "@/lib/prisma/queries"
 
 export default function JobDetailedView({ job }: { job: JobType }) {
   return (

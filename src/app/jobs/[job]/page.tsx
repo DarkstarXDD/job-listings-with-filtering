@@ -1,34 +1,27 @@
 import { notFound } from "next/navigation"
 
 import JobDetailedView from "@/components/JobDetailedView"
-import prisma from "@/lib/prisma"
+import { getJob } from "@/lib/prisma/queries"
 
-import type { Prisma } from "@prisma/client"
+import type { Metadata } from "next"
 
-export type JobType = Prisma.JobGetPayload<{
-  include: {
-    company: true
-    role: true
-  }
-}>
-
-export default async function JobPage({
-  params,
-}: {
+type PropsType = {
   params: Promise<{ job: string }>
-}) {
+}
+
+export async function generateMetadata({
+  params,
+}: PropsType): Promise<Metadata> {
+  const { job: jobId } = await params
+  const job = await getJob(jobId)
+
+  return { title: `${job?.position} at ${job?.company.name}` }
+}
+
+export default async function JobPage({ params }: PropsType) {
   const { job: jobId } = await params
 
-  const job = await prisma.job.findUnique({
-    where: {
-      id: jobId,
-    },
-
-    include: {
-      company: true,
-      role: true,
-    },
-  })
+  const job = await getJob(jobId)
 
   if (!job) {
     notFound()
