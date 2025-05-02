@@ -1,11 +1,15 @@
 import Image from "next/image"
 
+import { cn } from "@/lib/utils"
+
 export default function Avatar({
   src,
   alt = "",
+  className,
 }: {
   src: string
   alt?: string
+  className?: string
 }) {
   return (
     <Image
@@ -13,7 +17,7 @@ export default function Avatar({
       alt={alt}
       width={88}
       height={88}
-      className="size-12 md:size-22"
+      className={cn("size-12 md:size-22", className)}
     />
   )
 }

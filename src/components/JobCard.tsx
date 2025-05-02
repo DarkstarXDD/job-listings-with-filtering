@@ -1,6 +1,7 @@
 "use client"
 
 import { startCase } from "lodash"
+import Link from "next/link"
 import { LuBuilding2, LuBriefcase, LuClock3 } from "react-icons/lu"
 
 import { JobType } from "@/app/page"
@@ -38,7 +39,7 @@ export default function JobCard({
           </div>
 
           <h2 className="text-foreground hover:text-secondary-foreground cursor-pointer text-xl leading-normal font-bold md:text-2xl">
-            {job.position}
+            <Link href={`jobs/${job.id}`}>{job.position}</Link>
           </h2>
 
           <div className="text-foreground-muted flex items-center justify-center gap-6 text-base font-medium md:gap-9 md:text-lg">
