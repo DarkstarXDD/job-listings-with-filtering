@@ -1,4 +1,5 @@
 import { PrismaClient, Level, Contract, RoleName } from "@prisma/client"
+
 import { jobs } from "../public/jobsData"
 
 const prisma = new PrismaClient()
@@ -23,7 +24,11 @@ async function main() {
         company: {
           connectOrCreate: {
             where: { name: job.company },
-            create: { name: job.company, logo: job.logo },
+            create: {
+              name: job.company,
+              logo: job.logo,
+              location: job.companyLocation,
+            },
           },
         },
 

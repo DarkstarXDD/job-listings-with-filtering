@@ -24,7 +24,7 @@ export type JobWithTagsType = Prisma.JobGetPayload<{
 async function getJobFn(jobId: string) {
   return await prisma.job.findUnique({
     where: {
-      id: jobId,
+      id: parseInt(jobId),
     },
 
     include: {
@@ -60,7 +60,7 @@ export async function getAllJobs(filtersArray: string[]) {
 export async function getCompany(companyId: string) {
   return await prisma.company.findUnique({
     where: {
-      id: companyId,
+      id: parseInt(companyId),
     },
   })
 }
@@ -71,7 +71,7 @@ async function getCompanyWithFilteredJobsFn(
 ) {
   return await prisma.company.findUnique({
     where: {
-      id: companyId,
+      id: parseInt(companyId),
     },
 
     include: {

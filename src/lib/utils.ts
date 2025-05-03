@@ -23,7 +23,7 @@ export function formatPostedDate(date: Date) {
           case "xMinutes":
             return `${count}m${suffix}`
           case "xHours":
-            return `${count}hrs${suffix}`
+            return `${count}h${suffix}`
           case "xDays":
             return `${count}d${suffix}`
           case "xWeeks":

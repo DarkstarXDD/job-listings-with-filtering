@@ -37,7 +37,11 @@ export default async function CompanyPage({ params, searchParams }: PropsType) {
   return (
     <main className="grid grid-rows-[1fr_auto_auto_auto]">
       <div className="bg-primary-background col-start-1 col-end-2 row-start-1 row-end-3 h-52 bg-[url(../assets/bg-header-mobile.svg)] bg-cover bg-no-repeat md:h-60 md:bg-[url(../assets/bg-header-desktop.svg)]">
-        <CompanyHeader name={companyDetails.name} logo={companyDetails.logo} />
+        <CompanyHeader
+          name={companyDetails.name}
+          logo={companyDetails.logo}
+          location={companyDetails.location}
+        />
       </div>
       <JobListings
         jobs={companyDetails.jobs}

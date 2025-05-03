@@ -5,7 +5,7 @@ import Avatar from "@/components/ui/Avatar"
 type CompanyHeaderProps = {
   name: string
   logo: string
-  location?: string
+  location: string
 }
 
 export default function CompanyHeader({

@@ -28,7 +28,7 @@ enum RoleName {
 }
 
 model Job {
-  id         String     @id @default(cuid())
+  id         Int        @id @default(autoincrement())
   position   String
   isNew      Boolean    @default(false)
   isFeatured Boolean    @default(false)
@@ -42,17 +42,18 @@ model Job {
   tags       Tag[]
 
   company   Company @relation(fields: [companyId], references: [id])
-  companyId String
+  companyId Int
 
   role   Role   @relation(fields: [roleId], references: [id])
   roleId String
 }
 
 model Company {
-  id   String @id @default(cuid())
-  name String @unique
-  logo String
-  jobs Job[]
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  logo     String
+  location String
+  jobs     Job[]
 }
 
 model Role {
