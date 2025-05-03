@@ -17,7 +17,7 @@ export default function Avatar({
       alt={alt}
       width={88}
       height={88}
-      className={cn("size-12 md:size-22", className)}
+      className={cn("size-12 md:size-20", className)}
     />
   )
 }

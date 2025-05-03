@@ -28,10 +28,10 @@ export default function JobCard({
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
         <Avatar src={job.company.logo} />
         <div className="grid justify-items-start gap-4">
-          <div className="flex items-center justify-center gap-8 md:gap-4">
+          <div className="flex flex-wrap items-center justify-start gap-4">
             <Link
               href={`/companies/${job.company.id}`}
-              className="text-secondary-foreground hover:text-foreground-muted text-base font-bold md:text-lg"
+              className="text-secondary-foreground hover:text-foreground-muted text-sm font-bold md:text-base"
             >
               {job.company.name}
             </Link>
@@ -41,21 +41,21 @@ export default function JobCard({
             </div>
           </div>
 
-          <h2 className="text-foreground hover:text-secondary-foreground cursor-pointer text-xl leading-normal font-bold md:text-2xl">
+          <h2 className="text-foreground hover:text-secondary-foreground cursor-pointer text-xl leading-normal font-bold">
             <Link href={`/jobs/${job.id}`}>{job.position}</Link>
           </h2>
 
-          <div className="text-foreground-muted flex items-center justify-center gap-6 text-base font-medium md:gap-9 md:text-lg">
+          <div className="text-foreground-muted flex flex-wrap items-center justify-start gap-x-4 gap-y-3 text-sm font-medium md:gap-9 md:text-base">
             <p className="flex items-center gap-1">
-              <LuClock3 className="size-4" />
+              <LuClock3 className="size-3.5" />
               <span>{formatPostedDate(job.postedAt)}</span>
             </p>
             <p className="flex items-center gap-1">
-              <LuBriefcase className="size-4" />
+              <LuBriefcase className="size-3.5" />
               <span>{startCase(job.contract)}</span>
             </p>
             <p className="flex items-center gap-1">
-              <LuBuilding2 className="size-4" />
+              <LuBuilding2 className="size-3.5" />
               <span>{job.location}</span>
             </p>
           </div>
