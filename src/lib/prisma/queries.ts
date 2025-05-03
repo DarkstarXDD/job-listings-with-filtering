@@ -57,28 +57,44 @@ export async function getAllJobs(filtersArray: string[]) {
   })
 }
 
-async function getJobsByCompanyFn(companyId: string, filtersArray: string[]) {
-  return await prisma.job.findMany({
+export async function getCompany(companyId: string) {
+  return await prisma.company.findUnique({
     where: {
-      AND: [
-        { companyId: companyId },
-        ...filtersArray.map((tag) => ({
-          tags: {
-            some: {
-              name: tag,
-            },
-          },
-        })),
-      ],
-    },
-
-    include: {
-      company: true,
-      role: true,
-      languages: true,
-      tools: true,
-      tags: true,
+      id: companyId,
     },
   })
 }
-export const getJobsByCompany = cache(getJobsByCompanyFn)
+
+async function getCompanyWithFilteredJobsFn(
+  companyId: string,
+  filtersArray: string[]
+) {
+  return await prisma.company.findUnique({
+    where: {
+      id: companyId,
+    },
+
+    include: {
+      jobs: {
+        where: {
+          AND: filtersArray.map((tag) => ({
+            tags: {
+              some: {
+                name: tag,
+              },
+            },
+          })),
+        },
+
+        include: {
+          company: true,
+          role: true,
+          languages: true,
+          tools: true,
+          tags: true,
+        },
+      },
+    },
+  })
+}
+export const getCompanyWithFilteredJobs = cache(getCompanyWithFilteredJobsFn)
