@@ -5,14 +5,14 @@ import JobCard from "@/components/JobCard"
 import useJobFilters from "@/hooks/useJobFilters"
 import { cn } from "@/lib/utils"
 
-import type { JobType } from "@/app/page"
+import type { JobWithTagsType } from "@/lib/prisma/queries"
 
 export default function JobListings({
   className,
   jobs,
 }: {
   className: string
-  jobs: JobType[]
+  jobs: JobWithTagsType[]
 }) {
   const { filters, handleFilterChange, removeFilter, clearAllFilters } =
     useJobFilters()

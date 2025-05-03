@@ -1,6 +1,7 @@
 "use client"
 
 import { startCase } from "lodash"
+import Link from "next/link"
 import { LuBriefcase, LuBuilding2, LuClock3 } from "react-icons/lu"
 
 import Avatar from "@/components/ui/Avatar"
@@ -15,9 +16,12 @@ export default function JobDetailedView({ job }: { job: JobType }) {
       <div className="grid justify-items-start gap-4">
         <div className="flex flex-col gap-4">
           <Avatar src={job.company.logo} className="size-10 md:size-12" />
-          <p className="text-secondary-foreground text-sm font-bold md:text-lg">
+          <Link
+            href={`/companies/${job.company.id}`}
+            className="text-secondary-foreground hover:text-foreground-muted text-sm font-bold md:text-lg"
+          >
             {job.company.name}
-          </p>
+          </Link>
         </div>
 
         <h2 className="text-foreground text-lg leading-normal font-bold md:text-2xl">

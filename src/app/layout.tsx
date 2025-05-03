@@ -1,4 +1,4 @@
-import { League_Spartan, Inter } from "next/font/google"
+import { Inter } from "next/font/google"
 
 import "./globals.css"
 
@@ -31,11 +31,6 @@ export const metadata: Metadata = {
   },
 }
 
-const leagueSpartan = League_Spartan({
-  subsets: ["latin"],
-  variable: "--font-league-spartan",
-})
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -48,9 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${leagueSpartan.variable} ${inter.variable} font-inter bg-backrgound`}
-      >
+      <body className={` ${inter.variable} font-inter bg-backrgound`}>
         {children}
       </body>
     </html>

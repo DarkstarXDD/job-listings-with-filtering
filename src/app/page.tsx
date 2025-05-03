@@ -1,17 +1,5 @@
 import JobListings from "@/components/JobListings"
-import prisma from "@/lib/prisma"
-
-import type { Prisma } from "@prisma/client"
-
-export type JobType = Prisma.JobGetPayload<{
-  include: {
-    company: true
-    role: true
-    languages: true
-    tools: true
-    tags: true
-  }
-}>
+import { getAllJobs } from "@/lib/prisma/queries"
 
 export default async function HomePage({
   searchParams,
@@ -21,25 +9,7 @@ export default async function HomePage({
   const { filters = [] } = await searchParams
   const filtersArray = Array.isArray(filters) ? filters : [filters]
 
-  const jobs = await prisma.job.findMany({
-    where: {
-      AND: filtersArray.map((tag) => ({
-        tags: {
-          some: {
-            name: tag,
-          },
-        },
-      })),
-    },
-
-    include: {
-      company: true,
-      role: true,
-      languages: true,
-      tools: true,
-      tags: true,
-    },
-  })
+  const jobs = await getAllJobs(filtersArray)
 
   return (
     <main className="grid grid-rows-[1fr_auto_auto_auto]">

@@ -4,18 +4,18 @@ import { startCase } from "lodash"
 import Link from "next/link"
 import { LuBuilding2, LuBriefcase, LuClock3 } from "react-icons/lu"
 
-import { JobType } from "@/app/page"
 import Avatar from "@/components/ui/Avatar"
 import Badge from "@/components/ui/Badge"
 import { TagGroup, Tag } from "@/components/ui/TagGroup"
 import { formatPostedDate } from "@/lib/utils"
 
+import type { JobWithTagsType } from "@/lib/prisma/queries"
 import type { Selection } from "react-aria-components"
 
 type JobCardProps = {
   filters: string[]
   onFilterChange: (keys: Selection) => void
-  job: JobType
+  job: JobWithTagsType
 }
 
 export default function JobCard({
@@ -29,9 +29,12 @@ export default function JobCard({
         <Avatar src={job.company.logo} />
         <div className="grid justify-items-start gap-4">
           <div className="flex items-center justify-center gap-8 md:gap-4">
-            <p className="text-secondary-foreground text-base font-bold md:text-lg">
+            <Link
+              href={`/companies/${job.company.id}`}
+              className="text-secondary-foreground hover:text-foreground-muted text-base font-bold md:text-lg"
+            >
               {job.company.name}
-            </p>
+            </Link>
             <div className="flex items-center justify-center gap-2">
               {job.isNew && <Badge label="New!" />}
               {job.isFeatured && <Badge label="Featured" variant="secondary" />}
@@ -39,7 +42,7 @@ export default function JobCard({
           </div>
 
           <h2 className="text-foreground hover:text-secondary-foreground cursor-pointer text-xl leading-normal font-bold md:text-2xl">
-            <Link href={`jobs/${job.id}`}>{job.position}</Link>
+            <Link href={`/jobs/${job.id}`}>{job.position}</Link>
           </h2>
 
           <div className="text-foreground-muted flex items-center justify-center gap-6 text-base font-medium md:gap-9 md:text-lg">
