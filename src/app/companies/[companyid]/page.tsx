@@ -8,15 +8,15 @@ import { getCompany, getCompanyWithFilteredJobs } from "@/lib/prisma/queries"
 import type { Metadata } from "next"
 
 type PropsType = {
-  params: Promise<{ company: string }>
+  params: Promise<{ companyid: string }>
   searchParams: Promise<{ filters: string | string[] }>
 }
 
 export async function generateMetadata({
   params,
 }: PropsType): Promise<Metadata> {
-  const { company: companyId } = await params
-  const company = await getCompany(companyId)
+  const { companyid } = await params
+  const company = await getCompany(companyid)
 
   return {
     title: `${company?.name}'s Company Profile`,
@@ -24,11 +24,14 @@ export async function generateMetadata({
 }
 
 export default async function CompanyPage({ params, searchParams }: PropsType) {
-  const { company } = await params
+  const { companyid } = await params
   const { filters = [] } = await searchParams
   const filtersArray = Array.isArray(filters) ? filters : [filters]
 
-  const companyDetails = await getCompanyWithFilteredJobs(company, filtersArray)
+  const companyDetails = await getCompanyWithFilteredJobs(
+    companyid,
+    filtersArray
+  )
 
   if (!companyDetails) {
     notFound()

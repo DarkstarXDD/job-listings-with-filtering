@@ -6,22 +6,22 @@ import { getJob } from "@/lib/prisma/queries"
 import type { Metadata } from "next"
 
 type PropsType = {
-  params: Promise<{ job: string }>
+  params: Promise<{ jobid: string }>
 }
 
 export async function generateMetadata({
   params,
 }: PropsType): Promise<Metadata> {
-  const { job: jobId } = await params
-  const job = await getJob(jobId)
+  const { jobid } = await params
+  const job = await getJob(jobid)
 
   return { title: `${job?.position} at ${job?.company.name}` }
 }
 
 export default async function JobPage({ params }: PropsType) {
-  const { job: jobId } = await params
+  const { jobid } = await params
 
-  const job = await getJob(jobId)
+  const job = await getJob(jobid)
 
   if (!job) {
     notFound()
