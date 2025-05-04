@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation"
 import { cache } from "react"
 
 import prisma from "@/lib/prisma/prisma"
@@ -22,6 +23,10 @@ export type JobWithTagsType = Prisma.JobGetPayload<{
 }>
 
 async function getJobFn(jobId: string) {
+  if (!parseInt(jobId)) {
+    notFound()
+  }
+
   return await prisma.job.findUnique({
     where: {
       id: parseInt(jobId),
@@ -58,6 +63,10 @@ export async function getAllJobs(filtersArray: string[]) {
 }
 
 export async function getCompany(companyId: string) {
+  if (!parseInt(companyId)) {
+    notFound()
+  }
+
   return await prisma.company.findUnique({
     where: {
       id: parseInt(companyId),
@@ -69,6 +78,10 @@ async function getCompanyWithFilteredJobsFn(
   companyId: string,
   filtersArray: string[]
 ) {
+  if (!parseInt(companyId)) {
+    notFound()
+  }
+
   return await prisma.company.findUnique({
     where: {
       id: parseInt(companyId),
