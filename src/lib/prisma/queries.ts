@@ -28,6 +28,8 @@ async function getJobFn(jobId: string) {
   }
 
   return await prisma.job.findUnique({
+    cacheStrategy: { ttl: 60, swr: 10 },
+
     where: {
       id: parseInt(jobId),
     },
@@ -42,6 +44,8 @@ export const getJob = cache(getJobFn)
 
 export async function getAllJobs(filtersArray: string[]) {
   return await prisma.job.findMany({
+    cacheStrategy: { ttl: 60, swr: 10 },
+
     where: {
       AND: filtersArray.map((tag) => ({
         tags: {
@@ -50,6 +54,10 @@ export async function getAllJobs(filtersArray: string[]) {
           },
         },
       })),
+    },
+
+    orderBy: {
+      postedAt: "asc",
     },
 
     include: {
@@ -68,6 +76,8 @@ export async function getCompany(companyId: string) {
   }
 
   return await prisma.company.findUnique({
+    cacheStrategy: { ttl: 60, swr: 10 },
+
     where: {
       id: parseInt(companyId),
     },
