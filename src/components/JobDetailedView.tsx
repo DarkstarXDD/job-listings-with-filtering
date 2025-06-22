@@ -24,9 +24,9 @@ export default function JobDetailedView({ job }: { job: JobType }) {
           </Link>
         </div>
 
-        <h2 className="text-foreground text-lg leading-normal font-bold md:text-2xl">
+        <h1 className="text-foreground text-lg leading-normal font-bold md:text-2xl">
           {job?.position}
-        </h2>
+        </h1>
 
         <div className="text-foreground-muted flex items-center justify-center gap-6 text-sm font-medium md:gap-9 md:text-base">
           <p className="flex items-center gap-1">

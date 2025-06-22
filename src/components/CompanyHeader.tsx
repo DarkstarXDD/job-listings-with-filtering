@@ -16,7 +16,7 @@ export default function CompanyHeader({
   return (
     <div className="text-foreground grid justify-items-center gap-2 p-6 md:gap-3">
       <Avatar src={logo} className="md:size-16" />
-      <p className="text-lg font-bold">{name}</p>
+      <h1 className="text-lg font-bold">{name}</h1>
       <p className="flex items-center gap-2">
         <LuBuilding2 />
         <span>{location}</span>
