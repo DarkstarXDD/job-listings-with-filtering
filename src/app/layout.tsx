@@ -16,17 +16,17 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://job-listings-with-filtering-darkstarxdd.vercel.app/",
+    url: "https://job-listings-with-filtering-darkstar.vercel.app/",
     title: "Job Listings with Filtering",
 
     description:
       "Check out Darkstar's solution for the Job Listings with Filtering challenge on Frontend Mentor",
 
     images: {
-      url: "https://job-listings-with-filtering-darkstarxdd.vercel.app/og-img.jpeg",
+      url: "https://job-listings-with-filtering-darkstar.vercel.app/og-img.jpeg",
       type: "image/jpeg",
-      width: 1440,
-      height: 756,
+      width: 1200,
+      height: 630,
     },
   },
 }
